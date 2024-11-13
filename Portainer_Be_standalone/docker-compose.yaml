@@ -12,11 +12,12 @@ services:
     networks:
       - portainer_network  
 
+volumes:
+  portainer_data: 
+    external: true
+
 networks:
   portainer_network:
     driver: bridge 
     name: portainer_network 
 
-volumes:
-  portainer_data: 
-    external: true
