@@ -7,19 +7,9 @@ services:
       - npm_letsencrypt:/etc/letsencrypt
     ports:
       # These ports are in format <host-port>:<container-port>
-      - '80:80' # Public HTTP Port
+      - '80:80'   # Public HTTP Port
       - '443:443' # Public HTTPS Port
-      - '81:81' # Admin Web Port
-    deploy:
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 256M
-    
+      - '81:81'   # Admin Web Port   
     networks:
       - npm_public
 volumes:
@@ -31,6 +21,7 @@ volumes:
 
 networks:
   npm_public:
-    external: true
+    driver: bridge
+    name: npm_public
 
 
