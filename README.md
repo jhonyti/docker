@@ -1,5 +1,5 @@
 # docker-file
 
+Stacks
 
-🧊
-[Stack custom for portainer](/portainer/docker-compose.yaml)
+- 🧊[portainer](/portainer/docker-compose.yaml)
