@@ -2,4 +2,4 @@
 docker compose file 
 
 
-[Descrição da anotação](caminho/para/portainer/README.md)
+[Stack custom for portainer](/portainer/compose.yml)
