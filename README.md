@@ -2,5 +2,5 @@
 
 ### Stacks
 
-- 🧊[Portainer Be standalone](/Portainer Be standalone/docker-compose.yaml)  
-- ☁️[Nginx proxy manager](/Nginx proxy manager/docker-compose.yaml) 
+- 🧊[Portainer Be standalone](/Portainer_Be_standalone/docker-compose.yaml)  
+- ☁️[Nginx proxy manager](/Nginx_proxy_manager/docker-compose.yaml) 
