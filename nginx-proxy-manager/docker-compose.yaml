@@ -14,14 +14,13 @@ services:
       - npm_public
 volumes:
   npm_data:
-    external: true
-
+    name: npm_data
   npm_letsencrypt:
-    external: true
+    name: npm_letsencrypt
+    
 
 networks:
   npm_public:
-    driver: bridge
-    name: npm_public
+    external: true
 
 
