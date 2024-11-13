@@ -2,5 +2,5 @@
 
 Stacks
 
-- 🧊-[portainer](/portainer/docker-compose.yaml)
-- ☁️-[nginx-proxy](/nginx-proxy-manager/docker-compose.yaml)
+- 🧊 Portainer [link](/portainer/docker-compose.yaml)
+- ☁️ Nginx proxy manager [link](/nginx-proxy-manager/docker-compose.yaml)
