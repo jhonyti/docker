@@ -1,0 +1,26 @@
+services:
+  npm:
+    container_name: npm
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    ports:
+      - '80:80'   # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81'   # Admin Web Port   
+    networks:
+      - npm_public
+volumes:
+  npm_data:
+    name: npm_data
+  npm_letsencrypt:
+    name: npm_letsencrypt
+    
+networks:
+  npm_public:
+    driver: bridge
+    name: npm_public
+
+

@@ -1,0 +1,23 @@
+services:
+  portainer:
+    image: portainer/portainer-ee:2.21.4
+    container_name: portainer
+    restart: always
+    ports:
+      - "8000:8000"  # API Portainer
+      - "9443:9443"  # https
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - portainer_data:/data  
+    networks:
+      - portainer_network  
+
+volumes:
+  portainer_data: 
+    external: true
+
+networks:
+  portainer_network:
+    driver: bridge 
+    name: portainer_network 
+
