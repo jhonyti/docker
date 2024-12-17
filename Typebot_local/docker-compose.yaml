@@ -1,0 +1,85 @@
+networks:
+  typebot-net:
+    external: true
+
+volumes:
+  db-data:
+
+services:
+  typebot-db:
+    image: postgres:16
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=typebot
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=typebot
+    healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U postgres"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+    networks:
+      - typebot-net    
+
+  typebot-builder:
+    image: baptistearno/typebot-builder:3.1
+    restart: always
+    depends_on:
+      typebot-db:
+        condition: service_healthy
+    ports:
+      - '3001:3000'
+    networks:
+      - typebot-net 
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    environment:
+      - ENCRYPTION_SECRET=edrwEOgZ1IzkMZiaYgzmvSNKclY5iYpC
+      - DATABASE_URL=postgresql://postgres:typebot@typebot-db:5432/typebot
+      - NODE_OPTIONS=--no-node-snapshot
+      - NEXTAUTH_URL=http://172.16.12.216:3001
+      - NEXT_PUBLIC_VIEWER_URL=http://172.18.0.3:3002
+      - ADMIN_EMAIL=semobsuporteti@gmail.com
+      - DISABLE_SIGNUP=true
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_USERNAME=semobsuporteti@gmail.com  
+      - SMTP_PASSWORD=fbus oeat hlrm omjx  
+      - NEXT_PUBLIC_SMTP_FROM=semobsuporteti@gmail.com
+      - EVOLUTION_API_URL=http://evolution_api:8080
+      - EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
+      - EVOLUTION_API_KEY=38ZHvwRwSAiiDPtWOjl/YOMZ44wqUyYGlm+jGrGG2sU
+      #- EVOLUTION_API_SECRET=SUASECRETA
+      #- EVOLUTION_API_USERNAME=SEUUSUÁRIO
+      #- EVOLUTION_API_PASSWORD=SUASENHA
+      
+  typebot-viewer:
+    image: baptistearno/typebot-viewer:3.1
+    depends_on:
+      typebot-db:
+        condition: service_healthy
+    restart: always
+    ports:
+      - '3002:3000'
+    networks:
+      - typebot-net  
+    environment:
+      - ENCRYPTION_SECRET=edrwEOgZ1IzkMZiaYgzmvSNKclY5iYpC
+      - DATABASE_URL=postgresql://postgres:typebot@typebot-db:5432/typebot
+      - NODE_OPTIONS=--no-node-snapshot
+      - NEXTAUTH_URL=http://172.16.12.216:3001
+      - NEXT_PUBLIC_VIEWER_URL=http://172.18.0.3:3002
+      - ADMIN_EMAIL=semobsuporteti@gmail.com
+      - DISABLE_SIGNUP=true
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_USERNAME=semobsuporteti@gmail.com  
+      - SMTP_PASSWORD=fbus oeat hlrm omjx  
+      - NEXT_PUBLIC_SMTP_FROM=semobsuporteti@gmail.com
+      - EVOLUTION_API_URL=http://evolution_api:8080
+      - EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
+      - EVOLUTION_API_KEY=38ZHvwRwSAiiDPtWOjl/YOMZ44wqUyYGlm+jGrGG2sU
+      #- EVOLUTION_API_SECRET=SUASECRETA
+      #- EVOLUTION_API_USERNAME=SEUUSUÁRIO
+      #- EVOLUTION_API_PASSWORD=SUASENHA
+    
