@@ -13,8 +13,7 @@ services:
     volumes:
       - s3-data:/data
     networks:
-      typebot-net:
-        ipv4_address: 172.16.12.217
+      - typebot-net  # Usando a rede personalizada
 
   createbuckets:
     image: minio/mc
@@ -37,6 +36,3 @@ volumes:
 networks:
   typebot-net:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.16.8.0/21
