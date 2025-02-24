@@ -47,9 +47,10 @@ services:
       - SMTP_USERNAME=semobsuporteti@gmail.com  
       - SMTP_PASSWORD=fbus oeat hlrm omjx  
       - NEXT_PUBLIC_SMTP_FROM=semobsuporteti@gmail.com
-      - EVOLUTION_API_URL=http://evolution_api:8080
-      - EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
-      - EVOLUTION_API_KEY=38ZHvwRwSAiiDPtWOjl/YOMZ44wqUyYGlm+jGrGG2sU
+      
+      #- EVOLUTION_API_URL=http://evolution_api:8080
+      #- EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
+      #- EVOLUTION_API_KEY=38ZHvwRwSAiiDPtWOjl/YOMZ44wqUyYGlm+jGrGG2sU
       #- EVOLUTION_API_SECRET=SUASECRETA
       #- EVOLUTION_API_USERNAME=SEUUSUÁRIO
       #- EVOLUTION_API_PASSWORD=SUASENHA
@@ -76,9 +77,11 @@ services:
       - SMTP_USERNAME=semobsuporteti@gmail.com  
       - SMTP_PASSWORD=fbus oeat hlrm omjx  
       - NEXT_PUBLIC_SMTP_FROM=semobsuporteti@gmail.com
-      - EVOLUTION_API_URL=http://evolution_api:8080
-      - EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
-      - EVOLUTION_API_KEY=38ZHvwRwSAiiDPtWOjl/YOMZ44wqUyYGlm+jGrGG2sU
+
+
+      #- EVOLUTION_API_URL=http://evolution_api:8080
+      #- EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
+      #- EVOLUTION_API_KEY=38ZHvwRwSAiiDPtWOjl/YOMZ44wqUyYGlm+jGrGG2sU
       #- EVOLUTION_API_SECRET=SUASECRETA
       #- EVOLUTION_API_USERNAME=SEUUSUÁRIO
       #- EVOLUTION_API_PASSWORD=SUASENHA
