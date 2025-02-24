@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"  # API S3
+      - "9001:9001"  # Console Web
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    volumes:
+      - s3-data:/data
+    networks:
+      typebot-net:
+        ipv4_address: 172.16.12.217
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      sleep 10;
+      /usr/bin/mc alias set minio http://minio:9000 minio minio123;
+      /usr/bin/mc mb minio/typebot;
+      /usr/bin/mc anonymous set public minio/typebot/public;
+      exit 0;
+      "
+    networks:
+      - typebot-net
+
+volumes:
+  s3-data:
+
+networks:
+  typebot-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.8.0/21
