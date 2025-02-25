@@ -40,6 +40,13 @@ services:
       - SMTP_USERNAME=semobsuporteti@gmail.com  
       - SMTP_PASSWORD=fbus oeat hlrm omjx  
       - NEXT_PUBLIC_SMTP_FROM=semobsuporteti@gmail.com
+      - S3_ENDPOINT=minio
+      - S3_PORT=9000
+      - S3_ACCESS_KEY=minio
+      - S3_SECRET_KEY=minio123
+      - S3_BUCKET=typebot
+      - S3_REGION=us-east-1
+
       
       #- EVOLUTION_API_URL=http://evolution_api:8080
       #- EVOLUTION_API_ENDPOINT=http://evolution_api:8080/api/evolution
@@ -70,6 +77,12 @@ services:
       - SMTP_USERNAME=semobsuporteti@gmail.com  
       - SMTP_PASSWORD=fbus oeat hlrm omjx  
       - NEXT_PUBLIC_SMTP_FROM=semobsuporteti@gmail.com
+      - S3_ENDPOINT=minio
+      - S3_PORT=9000
+      - S3_ACCESS_KEY=minio
+      - S3_SECRET_KEY=minio123
+      - S3_BUCKET=typebot
+      - S3_REGION=us-east-1
 
 
       #- EVOLUTION_API_URL=http://evolution_api:8080
