@@ -35,4 +35,4 @@ volumes:
 
 networks:
   typebot-net:
-    driver: bridge
+    external: true

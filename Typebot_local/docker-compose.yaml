@@ -1,10 +1,3 @@
-networks:
-  typebot-net:
-    external: true
-
-volumes:
-  db-data:
-
 services:
   typebot-db:
     image: postgres:16
@@ -39,8 +32,8 @@ services:
       - ENCRYPTION_SECRET=edrwEOgZ1IzkMZiaYgzmvSNKclY5iYpC
       - DATABASE_URL=postgresql://postgres:typebot@typebot-db:5432/typebot
       - NODE_OPTIONS=--no-node-snapshot
-      - NEXTAUTH_URL=http://172.16.12.216:3001
-      - NEXT_PUBLIC_VIEWER_URL=http://172.18.0.3:3002
+      - NEXTAUTH_URL=http://typebot-builder:3001
+      - NEXT_PUBLIC_VIEWER_URL=http://typebot-viewer:3002
       - ADMIN_EMAIL=semobsuporteti@gmail.com
       - DISABLE_SIGNUP=true
       - SMTP_HOST=smtp.gmail.com
@@ -69,8 +62,8 @@ services:
       - ENCRYPTION_SECRET=edrwEOgZ1IzkMZiaYgzmvSNKclY5iYpC
       - DATABASE_URL=postgresql://postgres:typebot@typebot-db:5432/typebot
       - NODE_OPTIONS=--no-node-snapshot
-      - NEXTAUTH_URL=http://172.16.12.216:3001
-      - NEXT_PUBLIC_VIEWER_URL=http://172.18.0.3:3002
+      - NEXTAUTH_URL=http://typebot-builder:3001
+      - NEXT_PUBLIC_VIEWER_URL=http://typebot-viewer:3002
       - ADMIN_EMAIL=semobsuporteti@gmail.com
       - DISABLE_SIGNUP=true
       - SMTP_HOST=smtp.gmail.com
@@ -85,4 +78,9 @@ services:
       #- EVOLUTION_API_SECRET=SUASECRETA
       #- EVOLUTION_API_USERNAME=SEUUSUÁRIO
       #- EVOLUTION_API_PASSWORD=SUASENHA
-    
+networks:
+  typebot-net:
+    external: true
+
+volumes:
+  db-data:    
