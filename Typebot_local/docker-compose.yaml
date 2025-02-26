@@ -32,6 +32,7 @@ x-typebot-common: &typebot-common
 
 services:
   typebot-db:
+    container_name: typebot-db
     image: postgres:16
     restart: always
     volumes:
@@ -48,6 +49,7 @@ services:
       - typebot-net
 
   typebot-redis:
+    container_name: typebot-redis
     image: redis:alpine
     restart: always
     command: --save 60 1 --loglevel warning
@@ -63,18 +65,21 @@ services:
       - typebot-net
 
   typebot-builder:
+    container_name: typebot-builder
     <<: *typebot-common
     image: baptistearno/typebot-builder:latest
     ports:
       - "8080:3000"
 
   typebot-viewer:
+    container_name: typebot-viewer
     <<: *typebot-common
     image: baptistearno/typebot-viewer:latest
     ports:
       - "8081:3000"
   
   minio:
+    container_name: minio
     image: minio/minio
     command: server /data --console-address ":9001"
     ports:
@@ -89,6 +94,7 @@ services:
       - typebot-net  # Usando a rede personalizada
 
   createbuckets:
+    container_name: createbuckets
     image: minio/mc
     depends_on:
       - minio
@@ -109,5 +115,8 @@ networks:
 
 volumes:
   s3-data:
+    name: s3-data
   db-data:
+    name: db-data
   redis-data:
+    name: redis-data
