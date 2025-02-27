@@ -70,7 +70,7 @@ services:
     image: baptistearno/typebot-builder:latest
     ports:
       - "8080:3000"
-
+    
   typebot-viewer:
     container_name: typebot-viewer
     <<: *typebot-common
